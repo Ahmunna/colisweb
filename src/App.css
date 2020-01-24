@@ -1,3 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px&display=swap');
 .App {
   text-align: center;
+}
+
+input[type=text]
+{
+  width : 20rem;
+  height: 2rem;
+  border: 1px solid black ;
+  border-radius: 4%;
+  font-size: 20px;
+  font-family: 'Slabo 27px', serif;
+}
+
+input[type=submit]
+{
+  text-align: center;
+  background-color: lightblue;
+  font-style: italic;
+  width: 5rem;
+  height: 2.2rem;
+  border: none;
+  margin: 20px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover
+{
+  transform: scale(1.1);
+  transition: 0.5s all ease;
 }
