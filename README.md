@@ -11,7 +11,7 @@ npm install
 ```
 or 
 ```bash
-Yarn add
+Yarn
 ```
 
 ## Usage

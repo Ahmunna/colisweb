@@ -1315,11 +1315,6 @@
     "@svgr/plugin-svgo" "^4.3.1"
     loader-utils "^1.2.3"
 
-"@tarekraafat/autocomplete.js@^7.2.0":
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/@tarekraafat/autocomplete.js/-/autocomplete.js-7.2.0.tgz#d6ac9fe78db92d864ec096639e577f7e4b323829"
-  integrity sha512-p1aEcKC/WHpVBuFyRhXq/ie+mgO4QqCNEsdVIPUBgmNqmxV4dVfqYEpk///9vvKyranUUvrlVu4e2tdzAaXKIg==
-
 "@testing-library/dom@^6.11.0":
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-6.11.0.tgz#962a38f1a721fdb7c9e35e7579e33ff13a00eda4"
@@ -2046,13 +2041,6 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
-
-autocomplete.js@^0.37.0:
-  version "0.37.0"
-  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.37.0.tgz#bcfbfd7bcabe90e90fad4c2b1aaa931379a10c38"
-  integrity sha512-MxYfNb89sl7IRhNdEJv6z8dSfA7lVeU7Dk6m/+/ih0/tPLsbxIM7uPVsnWEUh4j7dFqJktlM7hCeU7jmx6VC8A==
-  dependencies:
-    immediate "^3.2.3"
 
 autoprefixer@^9.6.1:
   version "9.7.3"
@@ -5062,11 +5050,6 @@ ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
-
-immediate@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.2.3.tgz#d140fa8f614659bd6541233097ddaac25cdd991c"
-  integrity sha1-0UD6j2FGWb1lQSMwl92qwlzdmRw=
 
 immer@1.10.0:
   version "1.10.0"
