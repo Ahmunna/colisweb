@@ -17,12 +17,12 @@ input[type=text]
 input[type=submit]
 {
   text-align: center;
-  background-color: lightblue;
+  background-color: dodgerblue;
   font-style: italic;
   width: 5rem;
   height: 2.2rem;
   border: none;
-  margin: 20px;
+  margin: 10px;
   cursor: pointer;
 }
 
@@ -30,4 +30,42 @@ input[type=submit]:hover
 {
   transform: scale(1.1);
   transition: 0.5s all ease;
+}
+
+.no-suggestions {
+  color: #999;
+  padding: 0.5rem;
+}
+
+.suggestions {
+  border: 1px solid #999;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  max-height: 143px;
+  overflow-y: auto;
+  padding-left: 0;
+  width: 20rem;
+  margin: auto;
+}
+
+.suggestions li {
+  padding: 0.5rem;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+  background-color: dodgerblue;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
+
+.map-style
+{
+  width: 50%;
+  height: 50%;
 }
