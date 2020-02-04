@@ -4,7 +4,7 @@ const History = (props) =>
 {
     let HistoryContent;
     //handle Modal content
-    if(props.adressesList.length)
+    if( props.adressesList !== undefined && props.adressesList.length)
     {
         HistoryContent = (
         <ul>
