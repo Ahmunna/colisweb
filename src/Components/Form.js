@@ -1,7 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import MapContainer from './MapContainer';
 import { useCookies } from 'react-cookie';
 import '../App.css';
+import History from './History';
 const Form = () =>
 {
     //define states
@@ -14,17 +15,37 @@ const Form = () =>
     const [activeAdressLatitude,setActiveAdressLatitude] = useState(0);
     const [errorMessage, setErrorMessage] = useState('');
     const [cookies, setCookie] = useCookies(['adresses']);
+    const [show,setShow] = useState(false);
+
+    //we gonna use this flag to stop useEffect from running, it only runs after the first render
+    const flag = "i am a quick learner ;)"
+
+    //initialise the cookies array after the first render of the application
+    useEffect( () => 
+    {
+        if(cookies.adresses === undefined)
+        setCookie('adresses',[]);
+        // eslint-disable-next-line
+    },[flag]);
+
+    //Trigger the queryadress whenever the userInput changes
+    useEffect(() => {
+        if( userInput !== '') 
+        queryAdress();
+        // eslint-disable-next-line
+    },[userInput]);
+    
     
     //Input Form Handler Function
-    const handleChange = async (event) =>
+    const handleChange = (event) =>
     {
-        await Promise.all([setUserInput(event.currentTarget.value),setShowAdresses(true)])
-        if( userInput !== '') queryAdress();        
+        setUserInput(event.currentTarget.value);
+        setShowAdresses(true);    
     }
     //this function uses Fetch to get the result from the GEO api and updates the component's state
     const queryAdress = () =>
     {
-        return fetch(`https://api-adresse.data.gouv.fr/search/?q=${userInput}&limit=100&autocomplete=1`)
+        fetch(`https://api-adresse.data.gouv.fr/search/?q=${userInput}&limit=100&autocomplete=1`)
         .then(res => res.json())
         .then((result) => setAdressesList(result.features))
     }
@@ -44,10 +65,10 @@ const Form = () =>
         {
             setErrorMessage('Please enter an adress');
         }
+        //handle key events
         
     }
 
-    //handle key events
     const handleKeysEvents = (event) =>
     {
         //if the user clicks enter
@@ -84,6 +105,8 @@ const Form = () =>
     }
 
 
+    const handleShow = () => setShow(!show);
+
     //Adresses List
     let list;
     if(userInput !== '' && showAdresses)
@@ -117,7 +140,6 @@ const Form = () =>
             );
         }
     }
-    //let history = cookies.adresses.map()
     return(
         <>
         <div className="container">
@@ -127,8 +149,9 @@ const Form = () =>
                 {list}
             </div>
             <input type="submit" value="search" onClick={handleSubmit}/>
-            <input type="submit" value="history" />
+            <input type="submit" value="history" onClick={handleShow}/>
             {adressCoordinates.length > 0 && <MapContainer coordinates={adressCoordinates} />}
+            <History show={show} adressesList={cookies.adresses} onClose={handleShow}/>
         </div>
         </>
     );
