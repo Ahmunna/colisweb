@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import MapContainer from './MapContainer';
+import { useCookies } from 'react-cookie';
 import '../App.css';
 const Form = () =>
 {
@@ -11,8 +12,9 @@ const Form = () =>
     const [adressCoordinates,setAdressCoordinates] = useState([]);
     const [activeAdressLongitude,setActiveAdressLongitude] = useState(0);
     const [activeAdressLatitude,setActiveAdressLatitude] = useState(0);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [cookies, setCookie] = useCookies(['adresses']);
     
-
     //Input Form Handler Function
     const handleChange = async (event) =>
     {
@@ -32,7 +34,17 @@ const Form = () =>
     const handleSubmit = (event) =>
     {
         event.preventDefault();
-        setAdressCoordinates([...adressCoordinates,{longitude : activeAdressLongitude, latitude : activeAdressLatitude}])
+        if(userInput !== '')
+        {
+            setAdressCoordinates([...adressCoordinates,{longitude : activeAdressLongitude, latitude : activeAdressLatitude}])
+            setCookie('adresses',cookies.adresses.concat([userInput]));
+            setErrorMessage('');
+        }
+        else
+        {
+            setErrorMessage('Please enter an adress');
+        }
+        
     }
 
     //handle key events
@@ -70,7 +82,9 @@ const Form = () =>
         setActiveAdressLongitude(adressesList[activeAdress].geometry.coordinates[0]);
         setActiveAdressLatitude(adressesList[activeAdress].geometry.coordinates[1]);
     }
-    
+
+
+    //Adresses List
     let list;
     if(userInput !== '' && showAdresses)
     {
@@ -103,15 +117,20 @@ const Form = () =>
             );
         }
     }
+    //let history = cookies.adresses.map()
     return(
+        <>
         <div className="container">
+        <h3>{errorMessage}</h3>
             <div>
                 <input id="autoComplete" type="text" value={userInput} onChange={handleChange}  onKeyDown={handleKeysEvents}/>
                 {list}
             </div>
             <input type="submit" value="search" onClick={handleSubmit}/>
+            <input type="submit" value="history" />
             {adressCoordinates.length > 0 && <MapContainer coordinates={adressCoordinates} />}
         </div>
+        </>
     );
    
 }

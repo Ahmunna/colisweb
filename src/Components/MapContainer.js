@@ -24,14 +24,13 @@ const MapContainer = props =>
     /* France position as initial center for the map*/
       return(
             <Map
-            google={props.google}
-            zoom={5}
-            style={mapStyle}
-            initialCenter={{ lat: 48.864716, lng: 2.349014}}
-          >
-          {displayMarkers()}
-          </Map>  
-        
+              google={props.google}
+              zoom={5}
+              style={mapStyle}
+              initialCenter={{ lat: 48.864716, lng: 2.349014}}
+            >
+            {displayMarkers()}
+            </Map>     
       );
 
 }
@@ -39,7 +38,7 @@ const MapContainer = props =>
 const mapStyle = {
 
   width : '100%',
-  height : '50%',
+  height : '50%'
 }
 
 const googleWrapper = GoogleApiWrapper({ apiKey: config.apiKey })(MapContainer);
